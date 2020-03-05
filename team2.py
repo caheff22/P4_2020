@@ -6,9 +6,9 @@
 #     move: A function that returns 'c' or 'b'
 ####
 
-team_name = "East-West" # Only 10 chars displayed.
-strategy_name = "I'm nice until you cross me."
-strategy_description = "We collude except when we've been severely punished."
+team_name = "Classy Gentlemen" # Only 10 chars displayed.
+strategy_name = "Classy"
+strategy_description = "Good for the first half and in the second half if the other player coludes 3 times in a row, we will betray them"
     
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
@@ -26,11 +26,11 @@ def move(my_history, their_history, my_score, their_score):
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
     
-    if len(my_history) == 0: # It's the first round; collude.
+    if len(my_history) ==[1,50]: # For the first 50 rouds we will colude
         return 'c'
     else:
-        if my_history[-1]=='c' and their_history[-1]=='b':
-            return 'b' # Betray if severely punished last time,
+        if 'c' in their_history[-3]:
+            return 'b' # Betray if they have been nice for three round in a row
         else:
             return 'c' # otherwise collude.
 
@@ -71,4 +71,5 @@ if __name__ == '__main__':
               # move('bbb', 'ccc', 0, 0) returns 'b'.
               my_score=0, 
               their_score=0,
-              result='b')             
+              result='b')      
+                     
