@@ -26,13 +26,14 @@ def move(my_history, their_history, my_score, their_score):
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
     
-    if len(my_history) ==[1,50]: # For the first 50 rouds we will colude
-        return 'c'
+    if len(my_history) <= [50]:
+        return 'c' #Colude for the first 50 rounds
+        
     else:
-        if 'c' in their_history[-3]:
-            return 'b' # Betray if they have been nice for three round in a row
+        if 'c' in their_history[-3:]:
+            return 'b' # Betray if they have been nice for three rounds in a row
         else:
-            return 'c' # otherwise collude.
+            return 'c' # otherwise collude
 
     
 def test_move(my_history, their_history, my_score, their_score, result):
@@ -54,8 +55,8 @@ def test_move(my_history, their_history, my_score, their_score, result):
 if __name__ == '__main__':
      
     # Test 1: Betray on first move.
-    if test_move(my_history='',
-              their_history='', 
+    if test_move(my_history='ccc',
+              their_history='ccc', 
               my_score=0,
               their_score=0,
               result='b'):
